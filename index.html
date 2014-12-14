@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shiny App for Normal Distributions</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Shiny App for Normal Distributions">
+  <meta name="author" content="Vlad Podgurschi">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Shiny App for Normal Distributions</h1>
+    <h2>Project for the Coursera course &quot;Developing Data Products&quot;</h2>
+    <p>Vlad Podgurschi<br/>Coursera Student</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Introduction</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The normal distribution is the most used probability distribution in statistics.</p>
+
+<p>It is used in statistical inference for:</p>
+
+<ol>
+<li> hypothesis testing:  given an test value, get the probability that the value may appear by chance in observation.</li>
+<li> confidence interval:  determine what range of values a value may take so that we are confident in a specified degree  XXXX</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>The App</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The app [<a href="http://podgursv.shinyapps.io/project_1">http://podgursv.shinyapps.io/project_1</a>] helps determining in an interactive way the Z-scode and p-value of a user-provided quantile given a user-specified distribution.  This is convenient, because traditionally, a printed lookup table was used.</p>
+
+<p>The app also helps the user visualize the value in the context of the sample distribution.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Usage</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The user inputs the desired sample size, the and the mean and standard deviation of the distribution.  The larger the sample size, the better the more simetric and XXX the distribution appears.</p>
+
+<p>Optionally, the user may change the color of the histogram bars, as well as turn on/off the visibility of the corresponding density curve and median.</p>
+
+<p>If an quantile is entered in the input box, the app marks it on the histogram, and computes the corresponding Z-scode and p-value.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Internals</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The distribution is generated using the <code>rnorm</code> function.  For example, assuming the user ask for a sample of size <code>300</code>, having the mean <code>12</code>, and standard deviation <code>1.5</code>, the distribution is generated using the following function call:</p>
+
+<pre><code class="r">n &lt;- 300
+mu &lt;- 12
+sd &lt;- 1.5
+data &lt;- rnorm(n, mean = mu, sd = sd)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <article data-timings="">
+    <p>Based on this sample distribution, assuming the user enters the value <code>10.9</code> for the quantile, the Z-score is calculated with the well-known formula:</p>
+
+<pre><code class="r">q &lt;- 10.9
+z &lt;- (q - mu)/sd
+</code></pre>
+
+<pre><code>## [1] -7.133333
+</code></pre>
+
+<p>And the p-value is calculated using the <code>pnorm</code> function.  Since the app computes a one-side p-value, depending on the quantile magnitude compared to the sample distribution mean, the <code>lower.tail</code> parameter of the <code>pnorm</code> function has different values.</p>
+
+<pre><code class="r">if (q &gt;= mu) lt &lt;- FALSE else lt &lt;- TRUE
+p &lt;- pnorm(q, mean = mu, sd = sd, lower.tail = lt)
+</code></pre>
+
+<pre><code>## [1] 4.898346e-13
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Introduction'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='The App'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Usage'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Internals'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title=''>
+         5
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
