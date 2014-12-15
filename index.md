@@ -24,7 +24,7 @@ It is used in statistical inference for:
 
 ## The App
 
-This [app](http://podgursv.shinyapps.io/project_1) provides an interactive way to compute the Z-scode and p-value of a user-provided value given a user-specified distribution, thus providing a more convenient alternative to the traditional method of using a printed lookup table.
+This app, available at http://podgursv.shinyapps.io/project_1/, provides an interactive way to compute the Z-scode and p-value of a user-provided value given a user-specified distribution, thus providing a more convenient alternative to the traditional method of using a printed lookup table.
 
 The app also helps the user visualize the value on the plot of the sample distribution.
 
@@ -34,9 +34,9 @@ The app also helps the user visualize the value on the plot of the sample distri
 
 The user inputs the mean and standard deviation of the normal distribution, as well as the sample size.
 
-Optionally, the user may change the color of the bars in the histogram, as well as switch on/off the visibility of the corresponding density curve and median.
+Optionally, the user may change the color of the bars of the histogram, as well as switch on/off the visibility of the corresponding density curve and median value mark.
 
-If an value is entered in the input box, the app marks it on the histogram, and computes the corresponding Z-scode and p-value.
+If a value is entered in the input box, the app marks it on the histogram, and computes and displays the corresponding Z-scode and p-value.
 
 --- .class #id 
 
