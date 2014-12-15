@@ -62,7 +62,7 @@ z <- (q - mu)/sd
 ```
 
 ```
-## [1] -7.133333
+## [1] -0.7333333
 ```
 
 And the p-value is calculated using the `pnorm` function.  Since the app computes a one-side p-value, depending on the magnitude of the user entered value compared to the mean of the sample distribution, the `lower.tail` parameter of the `pnorm` function has different values.
@@ -73,5 +73,5 @@ p <- pnorm(q, mean = mu, sd = sd, lower.tail = lt)
 ```
 
 ```
-## [1] 4.898346e-13
+## [1] 0.2316776
 ```

@@ -112,7 +112,7 @@ data &lt;- rnorm(n, mean = mu, sd = sd)
 z &lt;- (q - mu)/sd
 </code></pre>
 
-<pre><code>## [1] -7.133333
+<pre><code>## [1] -0.7333333
 </code></pre>
 
 <p>And the p-value is calculated using the <code>pnorm</code> function.  Since the app computes a one-side p-value, depending on the magnitude of the user entered value compared to the mean of the sample distribution, the <code>lower.tail</code> parameter of the <code>pnorm</code> function has different values.</p>
@@ -121,7 +121,7 @@ z &lt;- (q - mu)/sd
 p &lt;- pnorm(q, mean = mu, sd = sd, lower.tail = lt)
 </code></pre>
 
-<pre><code>## [1] 4.898346e-13
+<pre><code>## [1] 0.2316776
 </code></pre>
 
   </article>
