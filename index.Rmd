@@ -17,22 +17,22 @@ The normal distribution is the most used probability distribution in statistics.
 
 It is used in statistical inference for:
 
-1.  hypothesis testing:  given an test value, get the probability that the value may appear by chance in observation.
-2.  confidence interval:  determine what range of values a value may take so that we are confident in a specified degree  XXXX
+1.  hypothesis testing
+2.  confidence interval
 
 --- .class #id 
 
 ## The App
 
-The [http://podgursv.shinyapps.io/project_1][app] provide an interactive way to compute the Z-scode and p-value of a user-provided quantile given a user-specified distribution.  This is convenient, because traditionally, a printed lookup table was used.
+The [http://podgursv.shinyapps.io/project_1][app] provide an interactive way to compute the Z-scode and p-value of a user-provided quantile given a user-specified distribution.  This is convenient than the traditional, of using a printed lookup table.
 
-The app also helps the user visualize the value in the context of the sample distribution.
+The app also helps the user visualize the value on the plot of the sample distribution.
 
 --- .class #id 
 
 ## Usage
 
-The user inputs the desired sample size, the and the mean and standard deviation of the distribution.  The larger the sample size, the better the more simetric and XXX the distribution appears.
+The user input he mean and standard deviation of the distribution, as well as the sample size.
 
 Optionally, the user may change the color of the histogram bars, as well as turn on/off the visibility of the corresponding density curve and median.
 
@@ -70,8 +70,3 @@ p <- pnorm(q, mean = mu, sd = sd, lower.tail = lt)
 ```{r echo=FALSE}
 p
 ```
-
-
-
-
-
